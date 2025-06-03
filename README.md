@@ -87,5 +87,8 @@ P.D: The test execution is almost certain to fail, modify the `run_and_time.sh` 
 
 
 # Deployment on OAR Platform
+To carry out the deployment on the OAR platform, a group of scripts was developed, see `deploy` directory.
 
-To carry out the deployment on the OAR platform, a group of scripts was developed (see `deploy` directory).
+
+# Graph the results
+For graphing the results, see the `result` directory.
