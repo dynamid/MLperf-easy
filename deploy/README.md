@@ -1,11 +1,9 @@
 # Automatic Test Execution
 
-In the directory where you cloned the mlperf repo, create a deploy directory for the deployments or verify that it exists.
+In the directory where you cloned the mlperf repo, verify that deploy directory it exists.
 ```
 mlperf$ ls -las
 mlperf$ cd deploy
-  or
-mlperf$ mkdir deploy
 ```
 Run the `oar_exec.sh` script, which requires three arguments. This script allocates resources using three arguments: the first argument defines the cluster where the test will be deployed, and the second and third arguments define the framework and model.
 ```
