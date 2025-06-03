@@ -1,0 +1,1 @@
+(echo "timestamp,device_id,metric_id,value" && cat $1 | jq -r '.[] | select(.metric_id == "prom_node_load1" or .metric_id == "bmc_node_power_watt" or .metric_id == "wattmetre_power_watt") | [.timestamp, .device_id, .metric_id, .value] | @csv') > "$1".csv
