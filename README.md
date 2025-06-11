@@ -40,7 +40,7 @@ cd ../inference/vision/classification_and_detection/tools/
 
 ```
 
-You can download different types of datasets, But first install some tools to download the datasets:
+You can download different types of datasets, but first install some tools to download the datasets:
 ```
 pip install boto3 tqdm opencv-python
 ```
