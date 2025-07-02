@@ -1,4 +1,4 @@
-# MLperf-Easy
+# Testing Using Docker
 Rapid execution of MLperf tests
 
 MLperf has a comprehensive testbed for various models and frameworks. This recipe presents a quick setup for CPU-based testing with different frameworks and models.
