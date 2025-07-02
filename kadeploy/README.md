@@ -13,11 +13,11 @@ oarsub -q default -p "cpuarch='x86_64' AND nodeset='nova'" -l host=1,walltime=01
 PD: For this case, one of the nodes of the Nova cluster is selected, but others that are x86_64 and not very old can be selected.
 
 The third step is to verify the node assigned by OAR and deploy the image using Kadeploy:
-Verify:
+- Verify:
 ```
 oarstat -f -j $JOB_ID | grep "assigned_hostnames" | cut -d'=' -f2 | tr -d ' '
 ```
-Deploy:
+- Deploy:
 ```
 kadeploy3 -m $NODE_HOSTNAME -e ubuntu2004-min
 ```
