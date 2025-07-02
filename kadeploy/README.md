@@ -152,3 +152,4 @@ device is one of [cpu|gpu]
 
 # Fast Apply
 All steps can be summarized in a script called "mlperf_kadeploy.sh", arguments such as the cluster where you want to deploy, the backend, model, device (CPU only) and type (can be --accuracy, --scenario SingleStream) can be passed to the script.
+PD: Once the test is finished, the script kills the job 60s later and generates a file with the result.
