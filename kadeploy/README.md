@@ -107,3 +107,48 @@ CFLAGS="-std=c++14" python3 setup.py install
 ---
 bash mlperf-install.sh
 ```
+
+The eighth step is to download the models and the test dataset:
+- Download models:
+```
+cd /tmp && mkdir -p models data && cd models/
+wget -q https://zenodo.org/record/2535873/files/resnet50_v1.pb \
+	https://zenodo.org/record/2269307/files/mobilenet_v1_1.0_224.tgz \
+	https://zenodo.org/record/4735647/files/resnet50_v1.onnx \
+	https://zenodo.org/record/4735651/files/mobilenet_v1_1.0_224.onnx
+tar -xzf mobilenet_v1_1.0_224.tgz ./mobilenet_v1_1.0_224_frozen.pb
+```
+- Download Dataset:
+```
+cd ../inference/vision/classification_and_detection/tools/
+./make_fake_imagenet.sh
+mv fake_imagenet/ /tmp/data
+```
+
+The last step is to declare the variables that are the paths to the model and dataset directory, then setup the tool and you are ready to use the execution script:
+- Variables:
+```
+cd ..
+export MODEL_DIR=/tmp/models
+export DATA_DIR=/tmp/data/fake_imagenet/
+```
+- Setup:
+```
+python3 setup.py develop
+```
+- Execution:
+```
+Example:
+./run_local.sh backend model device
+backend is one of [tf|onnxruntime|pytorch|tflite|tvm-onnx|tvm-pytorch]
+model is one of [resnet50|retinanet|mobilenet|ssd-mobilenet|ssd-resnet34]
+device is one of [cpu|gpu]
+
+./run_local.sh tf mobilenet cpu
+./run_local.sh tf resnet50 cpu --accuracy
+./run_local.sh onnxruntime mobilenet cpu --scenario SingleStream
+./run_local.sh onnxruntime resnet50 cpu --scenario MultiStream
+```
+
+# Fast Apply
+All steps can be summarized in a script called "mlperf_kadeploy.sh", arguments such as the cluster where you want to deploy, the backend, model, device (CPU only) and type (can be --accuracy, --scenario SingleStream) can be passed to the script.
