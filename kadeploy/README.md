@@ -31,3 +31,79 @@ PD: If you have problems with your login credentials, use the following command 
 ```
 ssh-keygen -f "/home/projasye/.ssh/known_hosts" -R "$NODE_HOSTNAME"
 ```
+
+In step six, when you log into the node, you will need to create two scripts to install the necessary tools and run them, the entire deployment is done in the tmp directory:
+```
+cd /tmp
+```
+```
+vi preinstall.sh
+---
+#!/bin/bash
+
+echo "[INFO] Configurando entorno MLPerf con Miniconda"
+
+echo "[INFO] Declarando variables"
+export PYTHON_VERSION=3.7
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+export PATH=/opt/anaconda3/bin:$PATH
+export HOME=/root
+
+# Actualizar sistema e instalar dependencias base
+echo "[INFO] Actualizando e instalando herramientas"
+apt-get update
+apt-get install -y --no-install-recommends \
+    git build-essential software-properties-common \
+    ca-certificates wget curl zip unzip \
+    python3.8-dev python3-distutils python3-setuptools python3-pip 
+
+# Instalar Miniconda
+echo "[INFO] Instalando Miniconda"
+cd /opt
+wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh -O miniconda.sh
+/bin/bash ./miniconda.sh -b -p /opt/anaconda3
+rm miniconda.sh
+/opt/anaconda3/bin/conda clean -tipsy
+ln -s /opt/anaconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+echo ". /opt/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+echo "conda activate base" >> ~/.bashrc
+conda config --set always_yes yes --set changeps1 no
+
+# Activar conda
+echo "[INFO] Activando conda"
+source /opt/anaconda3/etc/profile.d/conda.sh
+conda activate base
+---
+bash preinstall.sh
+```
+```
+vi mlperf-install.sh
+---
+#!/bin/bash
+
+# Instalando herramientas de python
+echo "[INFO] Instalando tools de python"
+pip install --upgrade pip
+pip install cmake
+pip install future
+pip install pillow
+pip install opencv-python-headless
+pip install Cython
+pip install pycocotools
+pip install pybind11
+pip install "numpy<=1.24.3"
+pip install "protobuf<=3.20.3"
+pip install "onnx>=1.5"
+pip install tensorflow
+pip install onnxruntime
+
+# Clonar MLPerf e instalar loadgen
+echo "[INFO] Clonando MLPerf e instalar loadgen"
+cd /tmp
+git clone --recursive https://github.com/mlcommons/inference
+cd inference/loadgen
+CFLAGS="-std=c++14" python3 setup.py install
+---
+bash mlperf-install.sh
+```
