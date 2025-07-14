@@ -1,5 +1,7 @@
 # Introduction to MLPerf
+<div align="justify">
 MLPerf is a standardized benchmark suite widely recognized for evaluating the performance of hardware, software, and model systems in machine learning tasks. Developed by MLCommons, MLPerf provides reproducible metrics that allow systems to be compared under homogeneous conditions. The tests cover various domains such as computer vision, natural language processing, object detection, and speech recognition, both in training and inference contexts. Its objective is to promote transparency and comparability in the development of artificial intelligence solutions, facilitating the choice of appropriate platforms and configurations based on user needs.
+</div>
 
 # Tools for Running MLPerf Tests: Docker and Kadeploy
 There are different environments for running MLPerf benchmarks, with Docker and Kadeploy being two of the most widely used tools due to their ease of integration and automation.
