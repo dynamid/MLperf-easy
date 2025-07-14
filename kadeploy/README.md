@@ -1,5 +1,6 @@
 # Testing Using Kadeploy
 
+<div align="justify">
 The first thing to do is to check which images are available in kadeploy and do this with the following command:
 ```
 kaenv3 -l
@@ -149,6 +150,7 @@ device is one of [cpu|gpu]
 ./run_local.sh onnxruntime mobilenet cpu --scenario SingleStream
 ./run_local.sh onnxruntime resnet50 cpu --scenario MultiStream
 ```
+<div>
 
 # Fast Apply
 All steps can be summarized in a script called "mlperf_kadeploy.sh", arguments such as the cluster where you want to deploy, the backend, model, device (CPU only) and type (can be --accuracy, --scenario SingleStream) can be passed to the script.
