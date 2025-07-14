@@ -154,5 +154,5 @@ device is one of [cpu|gpu]
 <div>
 
 # Fast Apply
-All steps can be summarized in a script called "mlperf_kadeploy.sh", arguments such as the cluster where you want to deploy, the backend, model, device (CPU only) and type (can be --accuracy, --scenario SingleStream) can be passed to the script.
-PD: Once the test is finished, the script kills the job 60s later and generates a file with the result.
+- All steps can be summarized in a script called "mlperf_kadeploy.sh", arguments such as the cluster where you want to deploy, the backend, model, device (CPU only) and type (can be --accuracy, --scenario SingleStream) can be passed to the script. Once the test is finished, the script kills the job 60s later and generates a file with the result.
+- Upon completion of a job with Kadeploy, the machine is rebooted to modify the changes made. This leaves it out of service for approximately 15 minutes and has an energy cost. Therefore, a complete execution of all tests is recommended. The scripts for the complete execution of the tests are located in the **full** directory.
