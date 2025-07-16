@@ -1,7 +1,8 @@
 ## Warning
 <div align="justify">
 Exploring GUIX showed that it's possible to easily recreate environments if you have the manifests and keep the working environment clean for testing, but it was a path that was abandoned after spending several weeks trying to configure a manifest to run MLPerf. In the end, this path wasn't pursued further as it was taking too long, and the kadeploy tool proved not to require GUIX for the simpler installation of MLPerf. 
-**Bad ending.**
+
+  **Bad ending.**
 </div>
 
 # What's GUIX?
