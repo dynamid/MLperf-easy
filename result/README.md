@@ -17,5 +17,10 @@ Create directories to sort the results, move the files to their respective frame
 cd <path/directory/result>
 find . -maxdepth 1 -name "1885*" -print0 | xargs -0 -n 1 bash -c '<path/directory>/file2csv.sh "$0"'
 ```
-Repeat for `tf`, finally use the notebook `png_gen.ipynb` to graph the data and save the graphs.
+Repeat for `tf`.
+
+Finally use the notebook:
+- `01_view_multiCSV.ipynb` allows you to view multiple CSVs and get an overview of test behavior
+- `02_cut_result.ipynb` allows you to narrow down results for easier management
+- `png_gen.ipynb` to graph the data and save the graphs.
 </div>
