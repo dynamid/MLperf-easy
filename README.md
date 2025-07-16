@@ -3,8 +3,8 @@ The tests performed and the proposed methods work without changes on OAR and Gri
 
 # Tools for Running MLPerf Tests: Docker and Kadeploy
 <div align="justify">
-There are different ways to run benchmarks in MLPerf, with Docker and Kadeploy being two of the most widely used tools due to their ease of integration and automation.
 
+  There are different ways to run benchmarks in MLPerf, with Docker and Kadeploy being two of the most widely used tools due to their ease of integration and automation.
 
 **Docker** allows you to package and distribute MLPerf test environments as portable containers (Rapid deployment), simplifying the installation of dependencies and ensuring consistent environments. This option is ideal for users seeking rapid configuration or working in infrastructures where container-based virtualization is standard. With Docker, you can obtain official MLCommons images or build custom containers tailored to specific hardware or software needs.
 
