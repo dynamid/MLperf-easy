@@ -19,7 +19,9 @@ Change to the directory for TensorFlow models and download the models
 ```
 cd tf/
 wget -q https://zenodo.org/record/2535873/files/resnet50_v1.pb
-wget -q https://zenodo.org/record/2269307/files/mobilenet_v1_1.0_224.tgz # decompress
+wget -q https://zenodo.org/record/2269307/files/mobilenet_v1_1.0_224.tgz
+# decompress
+tar -xzf mobilenet_v1_1.0_224.tgz ./mobilenet_v1_1.0_224_frozen.pb -C .
 ```
 
 Change to the directory for the Onnxruntime models and download the models
