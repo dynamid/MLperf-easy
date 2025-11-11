@@ -43,7 +43,7 @@ cd ../.. && mkdir data/
 
 Move to the tools directory to download the datasets and download the dataset you need
 ```
-cd ../inference/vision/classification_and_detection/tools/
+cd inference/vision/classification_and_detection/tools/
 
 ```
 
