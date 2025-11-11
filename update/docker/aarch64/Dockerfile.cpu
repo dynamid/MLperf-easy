@@ -1,0 +1,38 @@
+# syntax=docker/dockerfile:1.7
+FROM python:3.11-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    LANG=C.UTF-8 LC_ALL=C.UTF-8 \
+    HOME=/root
+
+WORKDIR /root
+
+# Paquetes base (arm64)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      git build-essential cmake pkg-config ca-certificates \
+      wget curl zip unzip python3-dev \
+      libopenblas-dev libjpeg-turbo-progs libpng-dev \
+      && rm -rf /var/lib/apt/lists/*
+
+# Python deps (arm64 wheels)
+RUN pip install --no-cache-dir --upgrade pip \
+ && pip install --no-cache-dir \
+      numpy==1.26.* pillow==10.* \
+      onnx==1.16.* onnxruntime==1.18.* \
+      tensorflow==2.15.* \
+      opencv-python-headless==4.10.* \
+      pybind11==2.12.* \
+      future==1.* \
+      Cython==3.* \
+      psutil==5.* rich==13.* \
+      pycocotools==2.0.*  --no-binary=pycocotools
+
+# MLPerf LoadGen
+RUN git clone --recursive https://github.com/mlcommons/inference /tmp/inference \
+ && cd /tmp/inference/loadgen \
+ && CFLAGS="-std=c++14" python setup.py install \
+ && rm -rf /tmp/inference
+
+# Por compatibilidad con tu pipeline previo
+ENTRYPOINT ["/bin/bash"]
