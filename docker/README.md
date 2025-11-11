@@ -53,7 +53,7 @@ pip install boto3 tqdm opencv-python
 ```
 - Fake dataset
 ```
-./make_fake_imagenet.sh && mv fake_imagenet/ ../../../../data/
+./make_fake_imagenet.sh && mv fake_imagenet/ ~/mlperf/data/
 ```
 - Other datasets
 ```
