@@ -47,15 +47,18 @@ cd inference/vision/classification_and_detection/tools/
 
 ```
 
-You can download different types of datasets, but first install some tools to download the datasets:
+Copy and modify the contents of the "make_fake_imagenet" file:
 ```
-pip install boto3 tqdm opencv-python
+cp -p make_fake_imagenet.sh make_fake_imagenet.sh.$(date +%Y%m%d-%H%M%S)
+vim make_fake_imagenet.sh
 ```
 - Fake dataset
 ```
 ./make_fake_imagenet.sh && mv fake_imagenet/ ~/mlperf/data/
 ```
-- Other datasets
+
+
+(Opcional) If you requirement use **other datasets**
 ```
 ./openimages_mlperf -d <DOWNLOAD_PATH>  -m <MAX_IMAGES>
 ./openimages_calibration_mlperf -d <DOWNLOAD_PATH>
