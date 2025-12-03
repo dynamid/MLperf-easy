@@ -89,7 +89,7 @@ export MODEL_DIR=../../../data/fake_imagenet/
 export MODEL_DIR=<DOWNLOAD_PATH>
 ```
 
-Test
+Before running ./run_and_time.sh, you must modify the Dockerfile.* files and the run_and_time.sh script included in the repository. In the update/docker/ directory, you will find all the required modifications for each device, as well as the updated version of run_and_time.sh.
 ```
 ./run_and_time.sh onnxruntime mobilenet cpu --accuracy
 ```
